@@ -1,0 +1,87 @@
+<html><head><base href="https://weird-web-wonders.com/">
+<title>The Butt Button</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #FFC0CB;
+    font-family: Arial, sans-serif;
+  }
+  
+  #butt-button {
+    width: 200px;
+    height: 200px;
+    background-color: #FFB6C1;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  #butt-button:hover {
+    transform: scale(1.1);
+  }
+  
+  #butt-button::before,
+  #butt-button::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: #FF69B4;
+    border-radius: 50%;
+    top: 50px;
+  }
+  
+  #butt-button::before {
+    left: 20px;
+  }
+  
+  #butt-button::after {
+    right: 20px;
+  }
+  
+  #fart-sound {
+    display: none;
+  }
+</style>
+</head>
+<body>
+  <button id="butt-button"></button>
+  <audio id="fart-sound" src="https://weird-web-wonders.com/assets/fart.mp3"></audio>
+
+<script>
+const buttButton = document.getElementById('butt-button');
+const fartSound = document.getElementById('fart-sound');
+
+buttButton.addEventListener('click', () => {
+  fartSound.play();
+  buttButton.style.transform = 'scale(0.9)';
+  setTimeout(() => {
+    buttButton.style.transform = 'scale(1)';
+  }, 100);
+});
+
+let clickCount = 0;
+const phrases = [
+  "Oh my, how cheeky!",
+  "You're really on a roll!",
+  "Keep it up, you gas!",
+  "You're really blowing me away!",
+  "This is getting out of hand!"
+];
+
+buttButton.addEventListener('click', () => {
+  clickCount++;
+  if (clickCount % 5 === 0 && clickCount <= phrases.length * 5) {
+    const index = Math.floor(clickCount / 5) - 1;
+    alert(phrases[index]);
+  }
+});
+</script>
+</body>
+</html>
